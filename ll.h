@@ -24,6 +24,15 @@
 #include <stdint.h>
 #include <stdio.h>
 
+/**
+ * @defgroup linked_list Simple Linked List Implementation
+ *
+ * @brief A simple linked list implementation inspired from the Linux
+ * kernel
+ *
+ * @{
+ */
+
 struct list_item {
     struct list_item *next, *prev;
 };
@@ -105,5 +114,5 @@ static inline unsigned char ll_is_empty(struct list_item *head)
     return head->next == head;
 }
 
-
+/** @} */
 #endif // __LL_H__
