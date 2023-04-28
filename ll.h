@@ -46,14 +46,14 @@ struct list_item {
 
 /// @brief Initialise a list using a head item
 /// @param list The list item to be used as the list's head
-static inline void ll_init_list(struct list_item* list)
+static inline void ll_init_list(struct list_item *list)
 {
     list->next = list;
     list->prev = list;
 }
 
 static inline void __ll_add(
-    struct list_item* new_item, struct list_item* prev, struct list_item* next)
+    struct list_item *new_item, struct list_item *prev, struct list_item *next)
 {
 
     new_item->next = next;
@@ -65,7 +65,7 @@ static inline void __ll_add(
 /// @brief Adds a new item after specified list item
 /// @param new_item New item to be added
 /// @param prev Item which shall preceed the new item in the list
-static inline void ll_add(struct list_item* new_item, struct list_item* prev)
+static inline void ll_add(struct list_item *new_item, struct list_item *prev)
 {
     __ll_add(new_item, prev, prev->next);
 }
@@ -74,12 +74,12 @@ static inline void ll_add(struct list_item* new_item, struct list_item* prev)
 /// @param new_item New item to be added
 /// @param next Item which shall follow the new item in the list
 static inline void ll_add_tail(
-    struct list_item* new_item, struct list_item* next)
+    struct list_item *new_item, struct list_item *next)
 {
     __ll_add(new_item, next->prev, next);
 }
 
-static inline void __ll_del(struct list_item* prev, struct list_item* next)
+static inline void __ll_del(struct list_item *prev, struct list_item *next)
 {
     prev->next = next;
     next->prev = next;
@@ -87,7 +87,7 @@ static inline void __ll_del(struct list_item* prev, struct list_item* next)
 
 /// @brief Removes an item from the list but does not free the container
 /// @param del Item to be removed from the list
-static inline void ll_del(struct list_item* del)
+static inline void ll_del(struct list_item *del)
 {
     __ll_del(del->prev, del->next);
     del->next = NULL;
@@ -100,7 +100,7 @@ static inline void ll_del(struct list_item* del)
 /// @brief Checks if a list is empty
 /// @param head Head of the list
 /// @return Boolean
-static inline unsigned char ll_is_empty(struct list_item* head)
+static inline unsigned char ll_is_empty(struct list_item *head)
 {
     return head->next == head;
 }
